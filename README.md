@@ -11,5 +11,6 @@ docker run --rm \
   -e S3_ACCESS_KEY_ID=id \
   -e S3_ACCESS_KEY_SECRET=secret \
   -e S3_DIRECTORY=myspace/mongo-backup \
-  airfocusio/postgres-backup:11.3
+  airfocusio/postgres-backup:11.3 \
+  backup
 ```
