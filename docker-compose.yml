@@ -1,0 +1,28 @@
+version: "2"
+
+
+services:
+  postgresql:
+    image: "postgres:11.3"
+    environment:
+      - POSTGRES_DB=test
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+        
+  backup:
+    build: .
+    command: [backup]
+    environment:
+      - HOST=postgresql
+      - DATABASE=test
+      - USERNAME=test
+      - PASSWORD=test
+      - S3_HOST=...
+      - S3_ACCESS_KEY_ID=...
+      - S3_ACCESS_KEY_SECRET=...
+      - S3_DIRECTORY=...
+      - S3_CLEAN_OLDER_THAN=5m
+      - S3_GPG_ENCRYPTION_PASSPHRASE=test
+    depends_on:
+      - postgresql
+
